@@ -2,14 +2,14 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 
 
-function Userlist() {
+function Adduser() {
 const [userId,setUserId] = useState('')
 const [username,setUserName] = useState('')
 const [email,setEmail] = useState('')
 const [surname,setSurname] = useState('')
 const [city,setCity] = useState('')
 const [loading, setLoading] = useState(false)
-const [user,setUser] = useState([])
+
 useEffect(()=>{
 
     FetchUsers()
@@ -19,7 +19,7 @@ useEffect(()=>{
 const FetchUsers = async() =>{
 try {
     setLoading(true)
-    const {data} = await axios.get(`/users`, {headers: {'Access-Control-Allow-Origin': '*'}})
+    const {data} = await axios.post(`/users/create`, {headers: {'Access-Control-Allow-Origin': '*'}})
     console.log("FETCHED >", data)
     setUserId(data.id);
     setUserName(data.name);
@@ -92,4 +92,4 @@ try {
   )
 }
 
-export default Userlist
+export default Adduser
