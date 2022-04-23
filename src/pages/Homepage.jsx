@@ -1,13 +1,15 @@
 import React from 'react'
 import Navigationbar from '../components/Navigationbar'
 import Userlist from '../components/Userlist'
-import Addusers from '../components/Addusers' 
+// import Usercreate from '../components/Usercreate'
+
 function Homepage() {
   return (<>
    <Navigationbar/>
+    
     <Userlist/>
-    <Addusers/>
-
+  
+    {/* <Usercreate/> */}
 
    </>
   )

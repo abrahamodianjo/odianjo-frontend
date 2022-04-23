@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Userlist() {
 const [userId,setUserId] = useState('')
@@ -65,6 +66,7 @@ try {
               <th className="px-4 py-2 " style={{ backgroundColor: "#f8f8f8" }}>Title </th>
               <th className="px-4 py-2 " style={{ backgroundColor: "#f8f8f8" }}>Email</th>
               <th className="px-4 py-2 " style={{ backgroundColor: "#f8f8f8" }}>City</th>
+              <th className="px-4 py-2 " style={{ backgroundColor: "#f8f8f8" }}>Action</th>
             </tr>
           </thead>
           <tbody className="text-sm font-normal text-gray-700">
@@ -77,6 +79,14 @@ try {
               <td className="px-4 py-4">{user.title}</td>
               <td className="px-4 py-4">{user.email}</td>
               <td className="px-4 py-4">{user.city}</td>
+              <td className="px-4 py-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></td>
+              <td>
+              
+                 <Link class=" mr-2" to={`/users/edit/${user.id}`}>
+                 <FontAwesomeIcon icon="fa-brands fa-twitter" />
+                  </Link>
+                </td>
             </tr>
             )}
 
