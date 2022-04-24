@@ -31,12 +31,12 @@ const handleSubmit = async(e) => {
         const {data} = await axios.post(`/odianjo/create/`,{
           title,name,email,city,surname  });
         
-        setName("");
-        setSurname("");
-        setEmail("");
-        setCity("");
-        setTitle("");      
-        setloading(false);
+        setName("data.name");
+        setSurname(data.surname);
+        setEmail(data.email);
+        setCity(data.city);
+        setTitle(data.title);      
+        setloading(true);
         toast.dark("User created successfully!")
         navigate('/')
     }catch(err){
