@@ -28,8 +28,8 @@ const handleSubmit = async(e) => {
         // console.table({title,name,surname,email,city})
 
         //handle data and send to backend
-        const {data} = await axios.post(`/users/create/`,{
-          title,name,email,city,surname  },  {headers: {'Access-Control-Allow-Origin': '*'}});
+        const {data} = await axios.post(`/odianjo/create/`,{
+          title,name,email,city,surname  });
         
         setName("");
         setSurname("");
