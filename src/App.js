@@ -12,10 +12,6 @@ function App() {
   return (
     <>
 <ToastContainer/>
-
-
-
-
   <Routes>
     <Route path="/" element={<Homepage/>} />
     <Route path="/create-user" element={<Createuser/>} />

@@ -28,15 +28,15 @@ const handleSubmit = async(e) => {
         // console.table({title,name,surname,email,city})
 
         //handle data and send to backend
-        const {data} = await axios.post(`/odianjo/create/`,{
+        const {data} = await axios.post('/odianjo/create/',{
           title,name,email,city,surname  });
         
-        setName("data.name");
+        setName(data.name);
         setSurname(data.surname);
         setEmail(data.email);
         setCity(data.city);
         setTitle(data.title);      
-        setloading(true);
+        setloading(false);
         toast.dark("User created successfully!")
         navigate('/')
     }catch(err){
