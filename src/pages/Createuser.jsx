@@ -98,7 +98,7 @@ export default class Create extends Component {
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeCity = this.onChangeCity.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
+        
       
         this.state = {
             title: '',
@@ -139,20 +139,32 @@ export default class Create extends Component {
           city: e.target.value
       });
     }
-    onSubmit(e) {
+    
+    onSubmit = async e => {
         e.preventDefault();
-        const serverport = {
+        try{
+        const users = {
             title: this.state.title,
             name: this.state.name,
             surname: this.state.surname,
             email: this.state.email,
             city: this.state.city
         }
-        axios.post('/odianjo/create/', serverport)
+        
+        
+        axios.post('https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create', users, {
+          mode: 'cors',
+          credentials: 'include'
+        } )
         .then(res => console.log(res.data));
-   
+
         toast.dark("User created successfully!")
-        //         navigate('/')
+
+      }catch(err){
+                  console.log(err);
+              
+                toast.error(err.message)
+             }
         this.setState({
             title: '',
             name: '',
@@ -160,9 +172,11 @@ export default class Create extends Component {
             email: '',
             city: ''
         });
+
+    
     }
 
-    render() {
+   render() {
         return (
           <div>
           <Navigationbar/>
@@ -171,27 +185,27 @@ export default class Create extends Component {
         <div class="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md"> 
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Title:  </label>
-                        <input type="text" className="form-control"/>
+                        <label>Title: </label>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.title}  onChange={this.onChangeTitle}/>
                     </div>
                     <div className="form-group">
                         <label>Surname: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.name}  onChange={this.onChangeName}/>
                     </div>
                     <div className="form-group">
                         <label>Name: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.surname}  onChange={this.onChangeSurname}/>
                     </div>
                     <div className="form-group">
                         <label>Email: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.email}  onChange={this.onChangeEmail}/>
                     </div>
                     <div className="form-group">
                         <label>City: </label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.city}  onChange={this.onChangeCity}/>
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Add Data" className="btn btn-danger"/>
+                        <input type="submit" value="Add Data" className="btn btn-danger" class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded"/>
                     </div>
                 </form>
             </div>
