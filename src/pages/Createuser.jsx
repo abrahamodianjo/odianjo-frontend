@@ -88,121 +88,143 @@ import {toast} from 'react-toastify'
 
 
 
-export default class Create extends Component {
+// export default class Create extends Component {
   
-    constructor(props) {
-        super(props);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeSurname = this.onChangeSurname.bind(this);
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeCity = this.onChangeCity.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+//     constructor(props) {
+//         super(props);
+//         this.onChangeTitle = this.onChangeTitle.bind(this);
+//         this.onChangeName = this.onChangeName.bind(this);
+//         this.onChangeSurname = this.onChangeSurname.bind(this);
+//         this.onChangeEmail = this.onChangeEmail.bind(this);
+//         this.onChangeCity = this.onChangeCity.bind(this);
+//         this.onSubmit = this.onSubmit.bind(this);
         
       
-        this.state = {
-            title: '',
-            name: '',
-            surname: '',
-            email: '',
-            city: ''
-        }
+//         this.state = {
+//             title: '',
+//             name: '',
+//             surname: '',
+//             email: '',
+//             city: ''
+//         }
       
-    }
+//     }
 
 
 
 
 
-    onChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        });
-    }
-    onChangeName(e) {
-        this.setState({
-            name: e.target.value
-        });
-    }
-    onChangeSurname(e) {
-      this.setState({
-          surname: e.target.value
-      });
-      }
-      onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }
-    onChangeCity(e) {
-      this.setState({
-          city: e.target.value
-      });
-    }
+//     onChangeTitle(e) {
+//         this.setState({
+//             title: e.target.value
+//         });
+//     }
+//     onChangeName(e) {
+//         this.setState({
+//             name: e.target.value
+//         });
+//     }
+//     onChangeSurname(e) {
+//       this.setState({
+//           surname: e.target.value
+//       });
+//       }
+//       onChangeEmail(e) {
+//         this.setState({
+//             email: e.target.value
+//         });
+//     }
+//     onChangeCity(e) {
+//       this.setState({
+//           city: e.target.value
+//       });
+//     }
     
-    onSubmit = async e => {
-        e.preventDefault();
-        try{
-        const users = {
-            title: this.state.title,
-            name: this.state.name,
-            surname: this.state.surname,
-            email: this.state.email,
-            city: this.state.city
-        }
+//     onSubmit = async e => {
+//         e.preventDefault();
+//         try{
+//         const users = {
+//             title: this.state.title,
+//             name: this.state.name,
+//             surname: this.state.surname,
+//             email: this.state.email,
+//             city: this.state.city
+//         }
         
         
-        axios.post('https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create', users, {
-          mode: 'cors',
-          credentials: 'include'
-        } )
-        .then(res => console.log(res.data));
+//         axios.post('https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create', users,{ crossdomain: true } , {method: 'post'})
+//         .then(res => console.log(res.data));
 
-        toast.dark("User created successfully!")
+//         toast.dark("User created successfully!")
 
-      }catch(err){
-                  console.log(err);
+//       }catch(err){
+//                   console.log(err);
               
-                toast.error(err.message)
-             }
-        this.setState({
-            title: '',
-            name: '',
-            surname: '',
-            email: '',
-            city: ''
-        });
+//                 toast.error(err.message)
+//              }
+//         this.setState({
+//             title: '',
+//             name: '',
+//             surname: '',
+//             email: '',
+//             city: ''
+//         });
 
     
-    }
+//     }
 
-   render() {
+const Createuser = () => {
+  // let history = useHistory(); // Use for Navigate on Previous
+  const [user, setUser] = useState({
+    title: "",
+    name: "",
+    surname: "",
+    email: "",
+    city: ""
+  });
+
+  const { title, name, surname, email, city} = user;
+  
+  const onInputChange = e => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  
+  const onSubmit = async e => {
+    e.preventDefault();
+    await axios.post("https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create",user, );
+    alert('Data Inserted');
+    // history.push("/");
+  };
+
+
+
+   
         return (
           <div>
           <Navigationbar/>
                <div class="animate-pulse min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
          <span class="border text-4xl text-yellow-800 px-6 pt-10 pb-8 bg-white w-1/2 max-w-md mx-auto rounded-t-md sm:px-10">Create User</span>
         <div class="border relative px-4 pt-7 pb-8 bg-white shadow-xl w-1/2 max-w-md mx-auto sm:px-10 rounded-b-md"> 
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={e => onSubmit(e)}>
                     <div className="form-group">
                         <label>Title: </label>
-                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.title}  onChange={this.onChangeTitle}/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" name="title" value={title} onChange={e => onInputChange(e)}/>
                     </div>
                     <div className="form-group">
                         <label>Surname: </label>
-                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.name}  onChange={this.onChangeName}/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" name="name" value={name} onChange={e => onInputChange(e)}/>
                     </div>
                     <div className="form-group">
                         <label>Name: </label>
-                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.surname}  onChange={this.onChangeSurname}/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" name="surname" value={surname} onChange={e => onInputChange(e)}/>
                     </div>
                     <div className="form-group">
                         <label>Email: </label>
-                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.email}  onChange={this.onChangeEmail}/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" name="email" value={email} onChange={e => onInputChange(e)}/>
                     </div>
                     <div className="form-group">
                         <label>City: </label>
-                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" value={this.state.city}  onChange={this.onChangeCity}/>
+                        <input type="text" className="form-control" class="border w-full h-10 px-3 mb-5 rounded-md" name="city" value={city} onChange={e => onInputChange(e)}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Add Data" className="btn btn-danger" class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded"/>
@@ -215,4 +237,5 @@ export default class Create extends Component {
            
            )
     }
-}
+  
+  export default Createuser;
