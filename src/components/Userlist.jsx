@@ -1,41 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import { Link } from "react-router-dom";
-
-// function Userlist() {
-// const [userId,setUserId] = useState('')
-// const [username,setUserName] = useState('')
-// const [email,setEmail] = useState('')
-// const [surname,setSurname] = useState('')
-// const [city,setCity] = useState('')
-// const [loading, setLoading] = useState(false)
-// const [user,setUser] = useState([])
-// useEffect(()=>{
-
-//     FetchUsers()
-// },[])
-
-// //Send req to backend 
-// const FetchUsers = async() =>{
-// try {
-//     setLoading(true)
-//     const {data} = await axios.get(`/odianjo`, {headers: {'Access-Control-Allow-Origin': '*'}})
-//     console.log("FETCHED >", data)
-//     setUserId(data.id);
-//     setUserName(data.name);
-//     setEmail(data.email);
-//     setSurname(data.surname);
-//     setCity(data.city);
-//     setUser(data);
-//     setLoading(false)
-// } catch (error) {
-//     console.log(error)
-//     setLoading(false)
-// }
-
-
-
-// }
+import { Link, useNavigate } from "react-router-dom"
+import {toast} from 'react-toastify'
 
 const Userlist = () => {
   const [users, setUser] = useState([]);
@@ -43,24 +9,25 @@ const Userlist = () => {
   useEffect(() => {
     loadUsers();
   }, []);
-
+  const navigate = useNavigate()
   const loadUsers = async () => {
   
     const result = await axios.get("https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo");
     setUser(result.data.reverse());
   };
 
-  const deleteUser = (Id) =>
+  const deleteUser = (id) =>
   {
-    axios.delete('https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/delete_users/'+Id)
+    axios.delete('https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/delete_users/'+id)
     .then((result)=>{
       loadUsers();
     })
     .catch(()=>{
-      alert('Deleted');
+      toast.dark("User deleted successfully!")
+      navigate('/');
     });
   };
-  
+
 
 
 
@@ -103,14 +70,27 @@ const Userlist = () => {
               <td className="px-4 py-4">{users.email}</td>
               <td className="px-4 py-4">{users.city}</td>
               <td className="px-4 py-4">
-              <Link to={`/odianjo/edit/${users.id}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-              </Link>
+           
+               <button onClick={() => deleteUser(users.id)}>
+
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+               </button>
+             
+            
               </td>
               <td className="px-4 py-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+                 <Link to={`/odianjo/edit/${users.id}`}>
+            
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" 
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+              <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
+             
+              </Link>
              </td>
-              
+            
             </tr>
             )}
 

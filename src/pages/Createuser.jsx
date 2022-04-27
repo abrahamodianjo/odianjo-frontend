@@ -191,7 +191,7 @@ const Createuser = () => {
   
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.post("https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create",user, );
+    await axios.post("https://mi-linux.wlv.ac.uk/~2057147/odianjo/public/odianjo/create",user );
     alert('Data Inserted');
     // history.push("/");
   };
