@@ -20,38 +20,41 @@ const saveUser = async (e) => {
 
     return (
         <div>
-            <form onSubmit={ saveUser }>
-                <div className="field">
+            <form  class="container bg-light mt-5 mb-4" onSubmit={ saveUser }>
+                <div className="form-group">
                     <label className="label">Name</label>
                     <input 
                         type="text" 
                         className="input" 
+                       
                         value={ name } 
                         onChange={ (e) => setName(e.target.value) }
                         placeholder="Name"
                     />
                 </div>
-                <div className="field">
+                <div className="form-group">
                     <label className="label">Surname</label>
                         <input 
                         type="text" 
                         className="input" 
+                        class="form control"
                         value={ surname } 
                         onChange={ (e) => setSurname(e.target.value) }
                         placeholder="Surname"
                         />
                 </div>
-                <div className="field">
+                <div className="form-group">
                     <label className="label">Email</label>
                         <input 
                         type="text" 
                         className="input" 
+                        class="form control"
                         value={ email } 
                         onChange={ (e) => setEmail(e.target.value) }
                         placeholder="Email"
                         />
                 </div>
-                    <div className="field">
+                    <div className="form-group">
                         <button className="button is-primary">Save</button>
                     </div>
             </form>

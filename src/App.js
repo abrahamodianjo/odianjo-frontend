@@ -5,12 +5,14 @@ import Adduser from './Adduser';
 import Edituser from './Edituser';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 function App() {
   return (
   
     <Router>
+      <Navbar/>
           <div className='container'>
           <Routes>
           <Route exact path='/' element={<Userlist />} />
@@ -18,7 +20,7 @@ function App() {
           <Route exact path='/edit/:id' element={<Edituser />} />
 
           </Routes>
-
+      <Footer/>
       </div>
     </Router>  
 

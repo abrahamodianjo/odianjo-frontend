@@ -37,29 +37,28 @@ const { id} = useParams();
                     <form onSubmit={ updateUser }>
                         <div className="field">
                             <label className="label">Name</label>
-                        <input type="text" className="input" value={ name } 
+                        <input type="text" className="input" class="form-control"
+                        value={ name } 
                         onChange={ (e) => setName(e.target.value) } 
                         placeholder="Name"
                             />
                         </div>
                         <div className="field">
                             <label className="label">Surname</label>
-                            <input type="text" className="input" value={ surname } 
+                            <input type="text" className="input" class="form-control" value={ surname } 
                             onChange={ (e) => setSurname(e.target.value) }
                             placeholder="Surname"/>
                             </div>
                             <div className="field">
                             <label className="label">Email</label>
-                                <input type="text" className="input" value={ email } 
+                                <input type="text" className="input" class="form-control" value={ email } 
                                 onChange={ (e) => setEmail(e.target.value) }
                                 placeholder="Email"/>
                             </div>
                             <div className="field">
-                        <button className="button is-primary">Update User</button>
+                        <button className="btn btn-dark text-decoration-none">Update User</button>
                     </div>
-                    <div className="field">
-                        <button className="button is-primary">check table</button>
-                    </div>
+                   
                 </form>
             </div>
         )

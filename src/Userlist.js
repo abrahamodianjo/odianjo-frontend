@@ -21,8 +21,9 @@ getUsers();
 
 return (
     <div>
-        <Link to={`/add`} className="button is-info mt-5 mb-2"> add new</Link>
-    <table className='table is-bordered is-striped is-narrow is-hoverable mt-2'>
+      
+     <div className='mt-5 mb-4 table-responsive'>  
+    <table className='table is-bordered is-striped is-narrow is-hoverable container'>
         <thead>
             <tr>
                     <th> ID </th>
@@ -40,9 +41,12 @@ return (
                                 <td> {user.surname} </td>
                                 <td> {user.email} </td>
                             <td>
-                        <Link to={`/edit/${user.id}`} className='button is-small is-info is-outlined'>Edit </Link>
-                        <button onClick={()=> deleteUsers(user.id)} className='button is-small is-danger is-outlined'> Delete </button>
-  
+                                <td>
+                        <Link to={`/edit/${user.id}`} className='btn btn-dark text-decoration-none'>Edit User </Link>
+                        </td>
+                        <td>
+                        <button onClick={()=> deleteUsers(user.id)} className='btn btn-dark text-decoration-none'> Delete </button>
+                        </td>
                         </td>
                     </tr>
 
@@ -50,6 +54,10 @@ return (
 
             </tbody>
         </table>
+        <div class="container">
+        <Link to={`/add`} className="btn btn-dark text-decoration-none"> add new</Link>
+		</div>
+        </div>
     </div>
     )
 }
