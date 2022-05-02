@@ -12,7 +12,7 @@ function App() {
   return (
   
     <Router>
-      <Navbar/>
+        <Navbar/>
           <div className='container'>
           <Routes>
           <Route exact path='/' element={<Userlist />} />
@@ -23,7 +23,7 @@ function App() {
       <Footer/>
       </div>
     </Router>  
-
+   
   )
 }
 

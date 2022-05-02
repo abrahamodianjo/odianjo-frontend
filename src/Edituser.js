@@ -33,30 +33,32 @@ const { id} = useParams();
     }
 
         return (
-                <div>
-                    <form onSubmit={ updateUser }>
-                        <div className="field">
-                            <label className="label">Name</label>
-                        <input type="text" className="input" class="form-control"
+                <div class="container">
+                    <form className=" mt-3 col-auto" onSubmit={ updateUser }>
+                        <div className="field mt-3">
+                        
+                        <input type="text"
+                         className="input" 
+                        class="form-control"
                         value={ name } 
                         onChange={ (e) => setName(e.target.value) } 
                         placeholder="Name"
                             />
                         </div>
-                        <div className="field">
-                            <label className="label">Surname</label>
+                        <div className="field mt-3">
+                         
                             <input type="text" className="input" class="form-control" value={ surname } 
                             onChange={ (e) => setSurname(e.target.value) }
                             placeholder="Surname"/>
                             </div>
-                            <div className="field">
-                            <label className="label">Email</label>
-                                <input type="text" className="input" class="form-control" value={ email } 
+                            <div className="field mt-3">
+                        
+                                <input type="text" className="input" class="form-control " value={ email } 
                                 onChange={ (e) => setEmail(e.target.value) }
                                 placeholder="Email"/>
                             </div>
                             <div className="field">
-                        <button className="btn btn-dark text-decoration-none">Update User</button>
+                        <button className="btn btn-dark text-decoration-none mt-3">Update User</button>
                     </div>
                    
                 </form>

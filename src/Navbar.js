@@ -1,10 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-const Navbar = () => {
+import { useState } from "react";
+function Navbar  () {
+ 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg bg-dark">
+    <div className="navbar  navbar-expand-lg navbar-dark bg bg-dark">
       <div className="container">
-        <div className="collapse navbar-collapse">
+      
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
               <NavLink className="navbar-brand" exact to="/">
@@ -12,10 +14,10 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-         
-        </div>
+          <Link className="btn btn-outline-light" to="/add">Add user</Link>
       </div>
-    </nav>
+    </div>
+    
   );
 };
 

@@ -42,7 +42,7 @@ return (
                                 <td> {user.email} </td>
                             <td>
                                 <td>
-                        <Link to={`/edit/${user.id}`} className='btn btn-dark text-decoration-none'>Edit User </Link>
+                        <Link to={`/edit/${user.id}`} className='btn btn-dark text-decoration-none'>Edit</Link>
                         </td>
                         <td>
                         <button onClick={()=> deleteUsers(user.id)} className='btn btn-dark text-decoration-none'> Delete </button>
@@ -54,10 +54,9 @@ return (
 
             </tbody>
         </table>
-        <div class="container">
-        <Link to={`/add`} className="btn btn-dark text-decoration-none"> add new</Link>
-		</div>
+      
         </div>
+        
     </div>
     )
 }
