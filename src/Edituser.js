@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useParams} from 'react-router-dom';
+import {  useParams} from 'react-router-dom';
 import axios from "axios";
 
 const Edituser = () => {
 const [name, setName] = useState('');
 const [surname, setSurname] = useState('');
 const [email, setEmail] = useState('');
-const navigate = useNavigate();
+
 const { id} = useParams();
 
     const updateUser = async (e) => {
@@ -18,7 +18,7 @@ const { id} = useParams();
                 email: email
         });
        
-    navigate("/");
+   
     }
         useEffect(()=>{
         getUserById();
@@ -33,13 +33,13 @@ const { id} = useParams();
     }
 
         return (
-                <div class="container">
-                    <form className=" mt-3 col-auto" onSubmit={ updateUser }>
+             <div >
+                <div className="container" data-testid="edituser-1" >
+                    <form className=" mt-3 col-auto" onSubmit={ updateUser } >
                         <div className="field mt-3">
                         
                         <input type="text"
-                         className="input" 
-                        class="form-control"
+                         className=" form-control" 
                         value={ name } 
                         onChange={ (e) => setName(e.target.value) } 
                         placeholder="Name"
@@ -47,13 +47,13 @@ const { id} = useParams();
                         </div>
                         <div className="field mt-3">
                          
-                            <input type="text" className="input" class="form-control" value={ surname } 
+                            <input type="text" className="input form-control"  value={ surname } 
                             onChange={ (e) => setSurname(e.target.value) }
                             placeholder="Surname"/>
                             </div>
                             <div className="field mt-3">
                         
-                                <input type="text" className="input" class="form-control " value={ email } 
+                                <input type="text" className="input form-control" value={ email } 
                                 onChange={ (e) => setEmail(e.target.value) }
                                 placeholder="Email"/>
                             </div>
@@ -62,6 +62,7 @@ const { id} = useParams();
                     </div>
                    
                 </form>
+            </div>
             </div>
         )
 }

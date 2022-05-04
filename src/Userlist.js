@@ -20,10 +20,11 @@ getUsers();
     }
 
 return (
-    <div>
+    <div >
       
      <div className='mt-5 mb-4 table-responsive'>  
-    <table className='table is-bordered is-striped is-narrow is-hoverable container'>
+    <table className='table is-bordered is-striped is-narrow is-hoverable container' 
+ data-testid="userlist-1">
         <thead>
             <tr>
                     <th> ID </th>
