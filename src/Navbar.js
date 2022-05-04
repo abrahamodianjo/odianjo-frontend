@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
-function Navbar  () {
+function Navbar() {
  
   return (
-    <div className="navbar  navbar-expand-lg navbar-dark bg bg-dark">
+    <div className="navbar navbar-expand-lg navbar-dark bg bg-dark">
       <div className="container">
       
           <ul className="navbar-nav mr-auto">
