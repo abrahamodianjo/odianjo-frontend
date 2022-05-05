@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import {  useParams} from 'react-router-dom';
 import axios from "axios";
 
+
 const Edituser = () => {
 const [name, setName] = useState('');
 const [surname, setSurname] = useState('');
