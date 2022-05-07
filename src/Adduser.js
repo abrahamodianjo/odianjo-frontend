@@ -5,7 +5,8 @@ import axios from "axios";
 
 //create a const for Adduser.js 
 const Adduser = () => {
-    //set the use state for each params from the database. Therefore allowing a new user to be created through the rest API
+    //this set the from params from the database. Therefore 
+    //allowing state to add a new user through the rest API
 const [name, setName] = useState('');
 const [surname, setSurname] = useState('');
 const [email, setEmail] = useState('');
@@ -14,10 +15,10 @@ const [email, setEmail] = useState('');
 
 
 
-//create a handleSubmit function with async 
-const handleSubmit = async (e) => {
+//create a Submit User constant with async function  
+const SubmitUser = async (e) => {
         e.preventDefault();
-            //set the axios functiomn to post dat using the URL and the Use state declaration
+            //set the axios function to post dat using the URL and the Use state declaration
             await axios.post('http://mi-linux.wlv.ac.uk/~2057147/abraham/public/abraham/create/',{
             name: name,
             surname: surname,
@@ -25,11 +26,11 @@ const handleSubmit = async (e) => {
         });   
 }
 
-
-    return (
-       
+    //The Add user form 
+    return (  
+     
         <div  className="container" >
-            <form data-testid="adduser-1" className=" col-auto mt-3" method="post" onSubmit={ handleSubmit }>
+            <form data-testid="adduser-1" className=" col-auto mt-3" method="post" onSubmit={ SubmitUser }>
                 <div className="field mt-3">
                  
                     <input 
