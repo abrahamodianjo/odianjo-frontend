@@ -28,10 +28,10 @@ return (
       {/*create a responsive space div tag*/}
      <div className='mt-5 mb-4 table-responsive'>  
      {/*Declare the table tag, make a it a container, set a border line, and then include the data test id to test the data  */}
-    <table className='table is-bordered is-striped is-narrow is-hoverable container' 
+    <table className='table table-dark table-striped container table-hover' 
  data-testid="userlist-1">
      {/*set the table content */}
-        <thead>
+        <thead className='thead-primary'>
             <tr>
                     <th> ID </th>
                     <th> Name </th>
